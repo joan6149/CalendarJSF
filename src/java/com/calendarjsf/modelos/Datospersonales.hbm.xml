@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-mar-2019 8:58:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.calendarjsf.modelos.Datospersonales" table="datospersonales" catalog="calendar" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="50" />
+        </property>
+        <property name="pais" type="string">
+            <column name="Pais" length="50" not-null="true" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="Provincia" length="50" not-null="true" />
+        </property>
+        <property name="poblacion" type="string">
+            <column name="Poblacion" length="50" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="50" not-null="true" />
+        </property>
+        <property name="postal" type="string">
+            <column name="Postal" length="50" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
