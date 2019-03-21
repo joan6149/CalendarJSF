@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-feb-2019, 16:08:45
+    Author     : Joan
+*/
+@font-face {
+	font-family: ArDestine;
+	src: url("../fonts/ARDESTINE.ttf");
+}
+.titulo {
+    /*text-align: center;*/
+	text-align: center;
+	font-family: ArDestine;
+	font-size: 72;
+	color: lightgreen;
+}
+.bordes {
+    border: 2px solid lightgreen;
+    border-radius: 15px;
+    padding: 50px 50px 50px 50px;
+}
+.logo {
+    text-align: center;
+}
+.logo img {
+	border: px solid black;
+	border-radius: 4px;
+}
+header {
+	background-color: lightgrey;
+}
+#menuUserPrincipal {
+	/*display: none;*/
+}
+.menuButtons {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.viewer {
+	margin-top: 15px;
+}
+.Subtitulo {
+	text-align: center;
+	font-family: ArDestine;
+	font-size: 32;
+	color: lightgreen;
+        margin-bottom: 40px;
+}
+label {
+	text-align: right;
+}
+.infoUser {
+	font-family: ArDestine;
+	font-size: 15;
+	color: lightgreen;
+}
+
