@@ -60,7 +60,33 @@ public class UsuarioDAO extends Helper {
     }
     //METODO DE OBTENCION DE USER A PARTIR DE MAIL
     public Usuarios getUserByEmail(String Email) throws Exception, HibernateException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(!this.session.isOpen()) {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+        }
+        Transaction tx = this.session.beginTransaction();
+        Usuarios user = new Usuarios();
+        
+        try {
+            Query query = this.session.createQuery("select u from Usuarios u where u.email=?");
+            query.setString(0, Email);
+            user = (Usuarios) query.uniqueResult();
+            if(user == null) {
+                return user = new Usuarios();
+            }
+            System.out.println("User " + user.getUsuario() + " recuperado.");
+            tx.commit();
+        }catch(HibernateException e) {
+            e.printStackTrace();
+            tx.rollback();
+        }catch(Exception e) {
+            e.printStackTrace();
+            tx.rollback();
+        } finally {
+            this.session.close();
+        }
+        
+        return user;
     }
     //METODO DE OBTENCION DE USER APARTIR DE USERNAME
     public Usuarios getUserByUsername(List<Usuarios> Users, String Username) throws NullPointerException, Exception{
@@ -88,8 +114,9 @@ public class UsuarioDAO extends Helper {
     public boolean userValidate(String Username, String Pass) throws Exception {
         boolean validate = false;
         //Este metodo tendria que valorar el hecho que el usuario tambien puede autenticarse con el email
-        Usuarios User = getUserByUsername(Username);
-        if((User.getUsuario().equals(Username)) && (User.getPass().equals(Pass))) {
+        //Username.contains("@") : 
+        Usuarios User = (Username.contains("@")) ? getUserByEmail(Username) : getUserByUsername(Username);
+        if(((User.getUsuario().equals(Username)) || (User.getEmail().equals(Username))) && (User.getPass().equals(Pass))) {
             validate = true;
         }
         return validate;
