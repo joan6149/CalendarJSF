@@ -50,7 +50,7 @@ public class ControllerIndex extends HttpServlet {
             } else {
                 Usuarios User = new Usuarios();
                 System.out.println(request.getParameter("user"));
-                User = usuarioDAO.getUserByUsername(request.getParameter("user"));
+                User = (request.getParameter("user").contains("@")) ? usuarioDAO.getUserByEmail(request.getParameter("user")) : usuarioDAO.getUserByUsername(request.getParameter("user"));
                 /* TODO output your page here. You may use following sample code. */
                 request.getSession().setAttribute("Usuario", User);
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
